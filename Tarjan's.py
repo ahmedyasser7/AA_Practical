@@ -32,7 +32,6 @@ class Graph:
                 w = st.pop()
                 print(w, end=" ")
                 stackMember[w] = False
-            print()
 
     # It uses recursive SCCUtil()
     def SCC(self):
