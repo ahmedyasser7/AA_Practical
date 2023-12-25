@@ -6,8 +6,8 @@ from collections import defaultdict
 # This class represents an directed graph using adjacency list representation
 class Graph:
     def __init__(self, vertices):
-        self.V = vertices
         self.graph = defaultdict(list)
+        self.V = vertices
         self.Time = 0
 
     def addEdge(self, u, v):
