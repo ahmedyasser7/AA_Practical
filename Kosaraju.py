@@ -13,7 +13,7 @@ class Graph:
     def DFSUtil(self, v, visited):
         # Mark the current node as visited and print it
         visited[v] = True
-        print(v)
+        print(v, end=" ")  # Print without newline
         # Recur for all the vertices adjacent to this vertex
         for i in self.graph[v]:
             if visited[i] == False:
@@ -26,9 +26,9 @@ class Graph:
         for i in self.graph[v]:
             if visited[i] == False:
                 self.fillOrder(i, visited, stack)
-        stack = stack.append(v)
-    # Function that returns reverse (or transpose) of this graph
+        stack.append(v)
 
+    # Function that returns reverse (or transpose) of this graph
     def getTranspose(self):
         g = Graph(self.V)
         # Recur for all the vertices adjacent to this vertex
@@ -45,16 +45,16 @@ class Graph:
         for i in range(self.V):
             if visited[i] == False:
                 self.fillOrder(i, visited, stack)
-                # Create a reversed graph
-            gr = self.getTranspose()
-            # Mark all the vertices as not visited (For second DFS)
-            visited = [False]*(self.V)
-            # Now process all vertices in order defined by Stack
-            while stack:
-                i = stack.pop()
-                if visited[i] == False:
-                    gr.DFSUtil(i, visited)
-                    print("")
+        # Create a reversed graph
+        gr = self.getTranspose()
+        # Mark all the vertices as not visited (For second DFS)
+        visited = [False]*(self.V)
+        # Now process all vertices in order defined by Stack
+        while stack:
+            i = stack.pop()
+            if visited[i] == False:
+                gr.DFSUtil(i, visited)
+                print("")
 
 
 # Create a graph given in the above diagram
@@ -65,6 +65,5 @@ g.addEdge('D', 'E')
 g.addEdge('E', 'D')
 g.addEdge('D', 'B')
 g.addEdge('B', 'A')
-print("Following are strongly connected components " +
-      "in given graph")
+print("Following are strongly connected components in the given graph:")
 g.printSCCs()
